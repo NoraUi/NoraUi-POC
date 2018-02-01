@@ -1,0 +1,127 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.noraui</groupId>
+    <artifactId>poc</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>NORAUI POC</name>
+
+    <description>Proof Of Concept of NoraUi</description>
+
+    <url>https://github.com/NoraUi/NoraUi-POC</url>
+
+    <organization>
+        <name>NoraUi</name>
+        <url>https://github.com/NoraUi</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>GNU Affero General Public License, Version 3</name>
+            <url>https://www.gnu.org/licenses/agpl-3.0-standalone.html</url>
+            <comments>All source code is under the GNU AGPL-3 license.</comments>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>sgrillon14</id>
+            <name>Stéphane GRILLON</name>
+        </developer>
+        <developer>
+            <id>nhallouin</id>
+            <name>Nicolas HALLOUIN</name>
+        </developer>
+    </developers>
+
+    <properties>
+        <selenium.version>3.5.3</selenium.version>
+        <gson.version>2.8.2</gson.version>
+        <guava.version>23.0</guava.version>
+        <junit.version>4.12</junit.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>jenkins-releases</id>
+            <url>http://repo.jenkins-ci.org/releases/</url>
+        </repository>
+        <repository>
+            <id>sonatype-releases</id>
+            <url>https://oss.sonatype.org/content/repositories/releases</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+
+        <!-- Framework selenium for parsing Web HTML DOM -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server</artifactId>
+            <version>${selenium.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.codeborne</groupId>
+                    <artifactId>phantomjsdriver</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-ie-driver</artifactId>
+            <version>${selenium.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+
+
+        <!-- Gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
+        </dependency>
+
+        <!-- Framework of tests -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
