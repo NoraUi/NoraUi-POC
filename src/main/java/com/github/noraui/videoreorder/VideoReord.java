@@ -44,8 +44,13 @@ public class VideoReord {
     public void main(String[] args) throws Exception {
         VideoReord videoReord = new VideoReord();
         videoReord.startRecording();
+        
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--headless");
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+        capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
         WebDriver driver = new ChromeDriver(capabilities);
+        
         driver.get("http://www.google.com");
         WebElement element = driver.findElement(By.name("q"));
         element.sendKeys("BreizhCamp 2018");
