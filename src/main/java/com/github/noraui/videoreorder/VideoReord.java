@@ -49,7 +49,7 @@ public class VideoReord {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--headless");
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-        capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+        // capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
         WebDriver driver = new ChromeDriver(capabilities);
         
         driver.get("http://www.google.com");
