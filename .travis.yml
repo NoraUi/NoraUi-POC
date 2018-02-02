@@ -1,0 +1,23 @@
+language: java
+dist: trusty
+sudo: false
+install: true
+
+addons:
+  chrome: stable
+  
+jdk:
+- oraclejdk8
+
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
+
+script:
+- mvn clean install
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'

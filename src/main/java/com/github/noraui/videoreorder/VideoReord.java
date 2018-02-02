@@ -32,6 +32,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class VideoReord {
@@ -44,8 +45,13 @@ public class VideoReord {
     public void main(String[] args) throws Exception {
         VideoReord videoReord = new VideoReord();
         videoReord.startRecording();
+        
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--headless");
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+        // capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
         WebDriver driver = new ChromeDriver(capabilities);
+        
         driver.get("http://www.google.com");
         WebElement element = driver.findElement(By.name("q"));
         element.sendKeys("BreizhCamp 2018");
