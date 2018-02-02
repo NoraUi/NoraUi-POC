@@ -46,11 +46,13 @@ public class VideoReord {
         VideoReord videoReord = new VideoReord();
         videoReord.startRecording();
         
-        final ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.setBinary("src/test/resources/drivers/linux/googlechrome/64bit/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/linux/googlechrome/64bit/chromedriver");
+        
+        // final ChromeOptions chromeOptions = new ChromeOptions();
+        // chromeOptions.setBinary("src/test/resources/drivers/linux/googlechrome/64bit/chromedriver");
         // chromeOptions.addArguments("--headless");
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-        capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+        // capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
         WebDriver driver = new ChromeDriver(capabilities);
         
         driver.get("http://www.google.com");
