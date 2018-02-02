@@ -16,6 +16,7 @@ before_script:
 
 script:
 - mvn clean install
+- echo https://api.travis-ci.org/jobs/${TRAVIS_JOB_ID}
 
 cache:
   directories:
