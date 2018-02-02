@@ -53,12 +53,7 @@ public class VideoReord {
         }
         
         System.setProperty("webdriver.chrome.driver", pathWebdriver);
-        
-        // final ChromeOptions chromeOptions = new ChromeOptions();
-        // chromeOptions.setBinary("src/test/resources/drivers/linux/googlechrome/64bit/chromedriver");
-        // chromeOptions.addArguments("--headless");
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-        // capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
         WebDriver driver = new ChromeDriver(capabilities);
         
         driver.get("http://www.google.com");
