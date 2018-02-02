@@ -46,7 +46,13 @@ public class VideoReord {
         VideoReord videoReord = new VideoReord();
         videoReord.startRecording();
         
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/linux/googlechrome/64bit/chromedriver");
+        String pathWebdriver = "src/test/resources/drivers/linux/googlechrome/64bit/chromedriver";
+        
+        if (!new File(pathWebdriver).setExecutable(true)) {
+            System.out.println("ERROR when change setExecutable on " + pathWebdriver);
+        }
+        
+        System.setProperty("webdriver.chrome.driver", pathWebdriver);
         
         // final ChromeOptions chromeOptions = new ChromeOptions();
         // chromeOptions.setBinary("src/test/resources/drivers/linux/googlechrome/64bit/chromedriver");
