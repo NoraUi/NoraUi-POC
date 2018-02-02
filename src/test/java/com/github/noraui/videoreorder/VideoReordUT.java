@@ -7,7 +7,6 @@ public class VideoReordUT {
     @Test
     public void runVideoReord() throws Exception {
         VideoReord mrc = new VideoReord();
-        System.out.println("DEBUG SGR: " + System.getProperty("webdriver.chrome.driver"));
         mrc.main(null);
     }
 
