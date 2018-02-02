@@ -15,7 +15,7 @@ before_script:
   - sleep 3 # give xvfb some time to start
 
 script:
-- mvn clean install -X
+- mvn clean install
 
 cache:
   directories:
