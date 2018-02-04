@@ -2,7 +2,7 @@
  * NoraUi is licensed under the licence GNU AFFERO GENERAL PUBLIC LICENSE
  * 
  * @author Nicolas HALLOUIN
- * @author Stéphane GRILLON
+ * @author StÃ©phane GRILLON
  */
 package com.github.noraui.bot;
 
@@ -10,13 +10,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-public class FirstSimpleBot {
+public class FirstSimpleBotWithHeadless {
 
     public static void main(String[] args) throws Exception {
 
+        final ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--headless");
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+        capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+
         WebDriver driver = new ChromeDriver(capabilities);
         for (int i = 0; i < 6; i++) {
             driver.get("http://www.google.com/ncr");

@@ -1,5 +1,6 @@
 .settings/
 .idea
 target/
+downloadFiles/
 .classpath
 .project
