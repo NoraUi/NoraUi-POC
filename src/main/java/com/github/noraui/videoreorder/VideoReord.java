@@ -32,8 +32,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+
+import com.github.noraui.utils.Utilities.OperatingSystem;
+import com.github.noraui.utils.Utilities.SystemArchitecture;
 
 public class VideoReord {
 
@@ -45,17 +47,19 @@ public class VideoReord {
     public void main(String[] args) throws Exception {
         VideoReord videoReord = new VideoReord();
         videoReord.startRecording();
-        
-        String pathWebdriver = "src/test/resources/drivers/linux/googlechrome/64bit/chromedriver";
-        
+
+        final OperatingSystem currentOperatingSystem = OperatingSystem.getCurrentOperatingSystem();
+        String pathWebdriver = String.format("src/test/resources/drivers/%s/googlechrome/%s/chromedriver%s", currentOperatingSystem.getOperatingSystemDir(),
+                SystemArchitecture.getCurrentSystemArchitecture().getSystemArchitectureName(), currentOperatingSystem.getSuffixBinary());
+
         if (!new File(pathWebdriver).setExecutable(true)) {
             System.out.println("ERROR when change setExecutable on " + pathWebdriver);
         }
-        
+
         System.setProperty("webdriver.chrome.driver", pathWebdriver);
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         WebDriver driver = new ChromeDriver(capabilities);
-        
+
         driver.get("http://www.google.com");
         WebElement element = driver.findElement(By.name("q"));
         element.sendKeys("BreizhCamp 2018");
