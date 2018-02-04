@@ -2,7 +2,7 @@
  * NoraUi is licensed under the licence GNU AFFERO GENERAL PUBLIC LICENSE
  * 
  * @author Nicolas HALLOUIN
- * @author Stéphane GRILLON
+ * @author StÃ©phane GRILLON
  */
 package com.github.noraui.bot;
 
