@@ -12,8 +12,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class FirstSimpleBotWithHeadless {
+
+    /**
+     * Specific logger
+     */
+    private static final Logger logger = LoggerFactory.getLogger(FirstSimpleBotWithHeadless.class);
 
     public static void main(String[] args) throws Exception {
 
@@ -28,9 +35,9 @@ public class FirstSimpleBotWithHeadless {
             WebElement element = driver.findElement(By.name("q"));
             element.sendKeys("BreizhCamp 2018");
             element.submit();
-            System.out.println(driver.getTitle());
+            logger.info(driver.getTitle());
             WebElement r = driver.findElement(By.xpath("//*[@id='resultStats']"));
-            System.out.println(r.getText());
+            logger.info(r.getText());
         }
         driver.quit();
     }

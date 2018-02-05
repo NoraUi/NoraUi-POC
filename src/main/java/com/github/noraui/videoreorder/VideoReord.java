@@ -33,11 +33,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.github.noraui.utils.Utilities.OperatingSystem;
 import com.github.noraui.utils.Utilities.SystemArchitecture;
 
 public class VideoReord {
+
+    /**
+     * Specific logger
+     */
+    private static final Logger logger = LoggerFactory.getLogger(VideoReord.class);
 
     public static final String USER_DIR = "user.dir";
     public static final String DOWNLOADED_FILES_FOLDER = "downloadFiles";
@@ -53,7 +60,7 @@ public class VideoReord {
                 SystemArchitecture.getCurrentSystemArchitecture().getSystemArchitectureName(), currentOperatingSystem.getSuffixBinary());
 
         if (!new File(pathWebdriver).setExecutable(true)) {
-            System.out.println("ERROR when change setExecutable on " + pathWebdriver);
+            logger.error("ERROR when change setExecutable on " + pathWebdriver);
         }
 
         System.setProperty("webdriver.chrome.driver", pathWebdriver);
@@ -64,7 +71,7 @@ public class VideoReord {
         WebElement element = driver.findElement(By.name("q"));
         element.sendKeys("BreizhCamp 2018");
         element.submit();
-        System.out.println("Page title is: " + driver.getTitle());
+        logger.info("Page title is: " + driver.getTitle());
         driver.quit();
         videoReord.stopRecording();
     }
