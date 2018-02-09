@@ -23,15 +23,19 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.io.File;
+import java.util.HashMap;
 
 import org.monte.media.Format;
 import org.monte.media.FormatKeys.MediaType;
 import org.monte.media.math.Rational;
 import org.monte.screenrecorder.ScreenRecorder;
 import org.openqa.selenium.By;
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -64,7 +68,16 @@ public class VideoReord {
         }
 
         System.setProperty("webdriver.chrome.driver", pathWebdriver);
+        final ChromeOptions chromeOptions = new ChromeOptions();
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+        capabilities.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
+        capabilities.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
+
+        final HashMap<String, Object> chromePrefs = new HashMap<>();
+        chromePrefs.put("download.default_directory", System.getProperty(USER_DIR) + File.separator + DOWNLOADED_FILES_FOLDER);
+        chromeOptions.setExperimentalOption("prefs", chromePrefs);
+        capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+
         WebDriver driver = new ChromeDriver(capabilities);
 
         driver.get("http://www.google.com");
