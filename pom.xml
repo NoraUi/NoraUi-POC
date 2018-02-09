@@ -108,7 +108,7 @@
             <artifactId>gson</artifactId>
             <version>${gson.version}</version>
         </dependency>
-        
+
         <!-- logback -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
