@@ -6,14 +6,18 @@
  */
 package com.github.noraui.bot;
 
+import java.io.File;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.github.noraui.utils.Utilities.OperatingSystem;
+import com.github.noraui.utils.Utilities.SystemArchitecture;
 
 public class FirstSimpleBotWithHeadless {
 
@@ -24,12 +28,19 @@ public class FirstSimpleBotWithHeadless {
 
     public static void main(String[] args) throws Exception {
 
+        final OperatingSystem currentOperatingSystem = OperatingSystem.getCurrentOperatingSystem();
+        String pathWebdriver = String.format("src/test/resources/drivers/%s/googlechrome/%s/chromedriver%s", currentOperatingSystem.getOperatingSystemDir(),
+                SystemArchitecture.getCurrentSystemArchitecture().getSystemArchitectureName(), currentOperatingSystem.getSuffixBinary());
+
+        if (!new File(pathWebdriver).setExecutable(true)) {
+            logger.error("ERROR when change setExecutable on " + pathWebdriver);
+        }
+
+        System.setProperty("webdriver.chrome.driver", pathWebdriver);
         final ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--headless");
-        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-        capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+        WebDriver driver = new ChromeDriver(chromeOptions);
 
-        WebDriver driver = new ChromeDriver(capabilities);
         for (int i = 0; i < 6; i++) {
             driver.get("http://www.google.com/ncr");
             WebElement element = driver.findElement(By.name("q"));
