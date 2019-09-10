@@ -23,9 +23,9 @@ import org.slf4j.LoggerFactory;
 public class SpecializedScreenRecorder extends ScreenRecorder {
 
     /**
-     * Specific logger
+     * Specific LOGGER
      */
-    private static final Logger logger = LoggerFactory.getLogger(SpecializedScreenRecorder.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SpecializedScreenRecorder.class);
 
     private String name;
 
@@ -46,7 +46,7 @@ public class SpecializedScreenRecorder extends ScreenRecorder {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss");
 
         File file = new File(movieFolder, name + "-" + dateFormat.format(new Date()) + "." + Registry.getInstance().getExtension(fileFormat));
-        logger.info("----- File: " + file.getAbsolutePath());
+        LOGGER.info("----- File: " + file.getAbsolutePath());
         return file;
     }
 }

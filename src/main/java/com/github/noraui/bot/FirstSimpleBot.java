@@ -22,9 +22,9 @@ import com.github.noraui.utils.Utilities.SystemArchitecture;
 public class FirstSimpleBot {
 
     /**
-     * Specific logger
+     * Specific LOGGER
      */
-    private static final Logger logger = LoggerFactory.getLogger(FirstSimpleBot.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(FirstSimpleBot.class);
 
     public static void main(String[] args) throws Exception {
 
@@ -33,7 +33,7 @@ public class FirstSimpleBot {
                 SystemArchitecture.getCurrentSystemArchitecture().getSystemArchitectureName(), currentOperatingSystem.getSuffixBinary());
 
         if (!new File(pathWebdriver).setExecutable(true)) {
-            logger.error("ERROR when change setExecutable on " + pathWebdriver);
+            LOGGER.error("ERROR when change setExecutable on " + pathWebdriver);
         }
 
         System.setProperty("webdriver.chrome.driver", pathWebdriver);
@@ -45,9 +45,9 @@ public class FirstSimpleBot {
             WebElement element = driver.findElement(By.name("q"));
             element.sendKeys("BreizhCamp 2018");
             element.submit();
-            logger.info(driver.getTitle());
+            LOGGER.info(driver.getTitle());
             WebElement r = driver.findElement(By.xpath("//*[@id='resultStats']"));
-            logger.info(r.getText());
+            LOGGER.info(r.getText());
         }
         driver.quit();
     }

@@ -17,9 +17,9 @@ import org.slf4j.LoggerFactory;
 public class Utilities {
 
     /**
-     * Specific logger
+     * Specific LOGGER
      */
-    private static final Logger logger = LoggerFactory.getLogger(Utilities.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Utilities.class);
 
     public enum OperatingSystem {
 
@@ -98,7 +98,7 @@ public class Utilities {
 
         public static SystemArchitecture getCurrentSystemArchitecture() {
             final String currentArchitecture = System.getProperties().getProperty("os.arch");
-            logger.info("os.arch: {}", currentArchitecture);
+            LOGGER.info("os.arch: {}", currentArchitecture);
             return getSystemArchitecture(currentArchitecture);
         }
 
