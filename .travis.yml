@@ -4,10 +4,14 @@ sudo: required
 install: true
 
 addons:
+  apt:
+    packages:
+      - dpkg
   chrome: stable
   
 jdk:
 - oraclejdk8
+- openjdk8
 
 before_script:
   - "export DISPLAY=:99.0"
